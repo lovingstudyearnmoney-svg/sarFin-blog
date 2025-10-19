@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mullayev Sardorbek – Resume</title>
+  <style>
+    :root{
+      --accent:#005fa3;
+      --bg:#f7f9fc;
+      --text:#222;
+      --light:#777;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Segoe UI",Arial,sans-serif;}
+    body{background:var(--bg);color:var(--text);line-height:1.6;padding:2rem 1rem;}
+    .card{max-width:820px;margin:auto;background:#fff;border-radius:8px;padding:2.2rem 2.5rem;box-shadow:0 4px 18px rgba(0,0,0,.08);}
+    h1{color:var(--accent);font-size:2.1rem;margin-bottom:.2rem;}
+    .tagline{font-size:1rem;color:var(--light);margin-bottom:1.2rem;}
+    .contact a{color:var(--accent);text-decoration:none;margin-right:1.2rem;font-weight:500;}
+    .section{margin:1.8rem 0;}
+    h2{border-bottom:2px solid var(--accent);display:inline-block;padding-bottom:4px;margin-bottom:.7rem;font-size:1.3rem;}
+    ul{margin-left:1.2rem;}
+    .award, .job, .edu{margin-bottom:.9rem;}
+    .date{float:right;font-weight:normal;color:var(--light);}
+    @media(max-width:600px){.date{display:block;float:none;margin-top:.2rem;}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Mullayev Sardorbek</h1>
+    <div class="tagline">Event Manager | Youth Volunteer | Award-Winning Scholar</div>
+    <div class="contact">
+      <a href="mailto:izzatilloanvarov641@gmail.com">Email</a>
+      <a href="tel:+998971713936">+998 97 171 3936</a>
+      <a href="https://linkedin.com/in/sardorbek-mullayev" target="_blank">LinkedIn</a>
+    </div>
+
+    <div class="section">
+      <h2>Education</h2>
+      <div class="edu">
+        <strong>Thompson School</strong> <span class="date">Tashkent, Uzbekistan &nbsp;•&nbsp; Graduating 2026</span><br>
+        GPA: 5.0/5.0 | 100% Scholarship (granted for final year) | 50% Admission Scholarship (9th grade)<br>
+        Honors: Event Manager (’24-’25), World Scholar’s Cup regional winner (qualified for globals)
+      </div>
+      <div class="edu">
+        <strong>Millat Umidi School</strong> <span class="date">Sep 2023 – Dec 2024</span><br>
+        GPA: 5.0/5.0 | 60% Merit Scholarship
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Leadership & Experience</h2>
+      <div class="job">
+        <strong>Student Event Manager – Thompson School</strong> <span class="date">Sep 2024 – Present</span><br>
+        Represent 500+ students; bridge student-administration communication; coordinate large-scale events that boost engagement and school culture.
+      </div>
+      <div class="job">
+        <strong>Co-Founder & COO – Mercy Drops Volunteer Org.</strong> <span class="date">Apr 2024 – Present</span><br>
+        Built a youth-led charity initiative; organised fundraising football tournament; distributed food & essentials to low-income families.
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Awards & Olympiads</h2>
+      <ul>
+        <li>World Scholar’s Cup Tashkent Regional 2025 – Gold (Individual Debate), Silver (Team Debate)</li>
+        <li>SEAMO Math Olympiad – Gold | AIMO – Silver | QORAKO’l – Silver | TIMO – Bronze | EXPERT – Silver | WMI – Silver | SIMSO – Silver</li>
+        <li>TaSIMO 2024 – 5th place (top 5 among 4,000 students, incl. IMO 2023 Silver medalists)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Volunteering & Teaching</h2>
+      <ul>
+        <li>Diplomind Debate volunteer (2 h judging)</li>
+        <li>2 years mathematics tutoring for middle-school students</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Skills & Interests</h2>
+      <strong>Languages:</strong> Uzbek (native), English (IELTS 7.5)<br>
+      <strong>Competencies:</strong> Public Speaking, Event Organisation, Team & Project Management, Negotiation, Finance & Economics basics<br>
+      <strong>Interests:</strong> Business Development, Data Science, Education Reform, Tech Innovation
+    </div>
+  </div>
+</body>
+</html>
