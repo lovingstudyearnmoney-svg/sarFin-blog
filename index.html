@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SarFin – Author Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top"><h1>✍️ SarFin Author Panel</h1></header>
+
+  <section class="editor">
+    <form id="form">
+      <input name="title" placeholder="Title" required>
+      <input name="excerpt" placeholder="Short excerpt (≈20 words)" required>
+      <textarea name="content" placeholder="Full article (HTML tags allowed: <b> <i> <a>)" required rows="14"></textarea>
+      <button type="submit">Publish</button>
+    </form>
+  </section>
+
+  <section class="list">
+    <h2>Existing posts</h2>
+    <ul id="ul"></ul>
+  </section>
+
+  <script>
+    const repo  = 'lovingstudyearnmoney-svg/sarFin-blog';
+    const token = prompt('Enter your GitHub personal access token (classic, repo scope) once:');
+    if (!token) { alert('Token required for auto-publish'); }
+
+    async function load(){
+      const list = await fetch('posts.json').then(r => r.json());
+      const ul   = document.getElementById('ul');
+      ul.innerHTML = list.map(p => `<li>
+        <a href="post.html?id=${p.id}" target="_blank">${p.title}</a>
+        <button onclick="del('${p.id}')">Delete</button>
+      </li>`).join('');
+      return list;
+    }
+
+    document.getElementById('form').onsubmit = async e => {
+      e.preventDefault();
+      const list = await load();
+      const f    = new FormData(e.target);
+      list.push({
+        id:    Date.now().toString(),
+        title: f.get('title'),
+        excerpt:f.get('excerpt'),
+        content:f.get('content'),
+        date:  new Date().toLocaleDateString()
+      });
+      await push(JSON.stringify(list, null, 2));
+      e.target.reset(); load();
+    };
+
+    async function del(id){
+      if (!confirm('Delete forever?')) return;
+      const list = await load();
+      await push(JSON.stringify(list.filter(p => p.id !== id), null, 2));
+      load();
+    }
+
+    async push(json){
+      const b64 = btoa(json);
+      const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/update-posts.yml/dispatches`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ref: 'main', inputs: { json: b64 } })
+      });
+      if (res.status === 204) alert('Published! Netlify will rebuild in ~30 s.');
+      else alert('Error: ' + res.status);
+    }
+
+    load();
+  </script>
+</body>
+</html>
