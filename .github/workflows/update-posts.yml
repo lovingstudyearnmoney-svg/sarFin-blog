@@ -1,0 +1,23 @@
+name: Update Posts
+
+on:
+  workflow_dispatch:
+    inputs:
+      json:
+        description: 'Base64-encoded posts.json'
+        required: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Decode & write posts.json
+        run: echo "${{ github.event.inputs.json }}" | base64 -d > posts.json
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add posts.json
+          git commit -m "Update posts.json via workflow"
+          git push
